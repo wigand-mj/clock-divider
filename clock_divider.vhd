@@ -7,19 +7,19 @@ use IEEE.NUMERIC_STD.All;
 entity clock_divider is
 
     port (
-            CLK_IN 							: in std_logic; -- 50MHz
-				DVD_FACTOR, HZ, MAGNITUDE	: in integer; -- Magnitude: 1 for e0, 1000 for e-6 etc...
-            CLK_OUT 							: out std_logic; -- 1 Hz - 0.5s ON and 0.5s OFF
-				nRST 								: in std_logic := '0'
+            CLK_IN 				: in std_logic; -- 50MHz
+	    DVD_FACTOR, HZ, MAGNITUDE		: in integer; -- Magnitude: 1 for e0, 1000 for e-6 etc...
+            CLK_OUT 				: out std_logic; -- 1 Hz - 0.5s ON and 0.5s OFF
+	    nRST 				: in std_logic := '0'
         );
 
 end clock_divider;
 
 architecture rtl of clock_divider is
 
-	 signal Counter : integer range 0 to (50000000) := 0; -- 50000000 maximum HZ
-		--signal Counter : integer := 0; -- when MAX HZ unknown in compilation time
-    signal DVD_CLK : std_logic := '0';
+    signal Counter 	: integer range 0 to (50000000) := 0; -- 50000000 maximum HZ
+  --signal Counter 	: integer := 0; -- when MAX HZ unknown in compilation time
+    signal DVD_CLK 	: std_logic := '0';
 
 begin
 
